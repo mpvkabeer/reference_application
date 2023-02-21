@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+.triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-top: 50px solid #555;
+}
+.body100 {
+	width: 100%;
+	height: 100vh;
+	
+}
+.div100 {
+	width: 100%;
+	height: 100%;
+	
+	display: inline-block;
+}
+.div10002 {
+	width: 100%;
+	display: inline-block;
+}
+.div10002Small {
+	width: 100%;
+	display: inline-block;
+	font-size: 10px;
+	color: #beb7b7;
+}
+.div50 {
+	width: 50%;
+	height: 50%;
+	
+}
+.div33 {
+	width: 33%;
+	height: 100%;
+	
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.div10033 {
+	width: 100%;
+	height: 33%;
+	
+	display: inline-block;
+	white-space: nowrap;
+}
+.div10016 {
+	width: 100%;
+	height: 16%;
+	
+	display: inline-block;
+
+}
+.div16100 {
+	width: 16%;
+	height: 100%;
+	display: inline-block;
+}
+.div10098 {
+	width: 100%;
+	height: 98%;
+	display: inline-block;
+}
+
+.div10002 .div16100 {
+    float: left;
+    margin-right: 10px;
+    width: 120px;
+    line-height: 27px;
+    text-align: center;
+	height:5px;
+}
+.div10002 .div16100 .div10002:hover {
+    
+    /*color: #fff;
+	    border-radius: 3px;*/
+}
+
+.currentTimeToSelect {
+	width: 100%;
+	/*display: inline-block;
+    background: #1ba0b6;
+    color: #fff;*/
+    background: #1ba0b6;
+	border-bottom-width:2px;
+	border-bottom-style: solid;
+	border-bottom-color: #92a8d1;	
+}
+
+.currentTimeToSelectSmall {
+	width: 100%;
+	height: 10px;
+	display: inline-block;
+	font-size: 10px;
+	color: #beb7b7;
+	border-bottom-width:2px;
+	border-bottom-style: solid;
+	border-bottom-color: #92a8d1;	
+}
+
+.timezoneTextStyle {
+	width: 100%;
+	height: 10px;
+	display: inline-block;
+	font-size: 8px;	
+	margin-left: 40px;
+	color: #a65959;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl" onload="scrollToCurrentTime()">
+<div class="div100">
+	<div class="div10002">
+		<div class="div16100" ng-repeat="zone in zoneArray">
+			<div class="div10002">{{zone.name}}</div>
+			<div class="div16100 tim" ng-repeat="mytime in UTC">
+			<div ng-if="mytime.bigInterval==true" ng-class="(currentUTCTime==mytime.time)? 'currentTimeToSelect': 'div10002'">{{mytime.time+zone.offset | date:'hh:mm a'}} <span class="timezoneTextStyle"> {{zone.name}} </span></div> 
+			<div ng-if="mytime.bigInterval==false" ng-class="(currentUTCTime==mytime.time)? 'currentTimeToSelectSmall': 'div10002Small'"></div>
+			<div ng-if="(currentUTCTime==mytime.time && (zone.name=='IST'))" id="currentTimeSection"></div>
+		</div>
+		</div>
+		<div>For questions and new feature request, contact: <a href="mailto:hakabeer@gmail.com">hakabeer@gmail.com</a></div>
+		
+	</div>
+</div>
+<!--svg height="210" width="500">
+  <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+</svg-->
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+
+	$scope.UTC = [];
+	//$scope.currentUTCTimeRange = "";
+	var minuteToMS = 60*1000;
+	var currentTime = new Date();
+	$scope.currentUTCTime = new Date(currentTime.getTime() + (currentTime.getTimezoneOffset()*minuteToMS));
+	$scope.currentUTCTime = $scope.currentUTCTime.setSeconds(0,0);
+	
+	$scope.currentUTCTime = $scope.currentUTCTime - ((new Date($scope.currentUTCTime).getMinutes()%5)*minuteToMS)
+
+	$scope.PSTOffset = -420*minuteToMS;
+	$scope.MSTOffset = -360*minuteToMS;
+	$scope.CSTOffset = -300*minuteToMS;
+	$scope.ESTOffset = -240*minuteToMS;
+	$scope.UKTOffset = 0*minuteToMS;
+	$scope.ISTOffset = 330*minuteToMS;
+	
+	$scope.zoneArray = [
+		{
+			name: "PST",
+			offset: -420*minuteToMS
+		},
+		{
+			name: "MST",
+			offset: -360*minuteToMS
+		},
+		{
+			name: "CST",
+			offset: -300*minuteToMS
+		},
+		{
+			name: "EST",
+			offset: -240*minuteToMS
+		},
+		{
+			name: "UK",
+			offset: 0*minuteToMS
+		},
+		{
+			name: "IST",
+			offset: 330*minuteToMS
+		}		
+	
+	];
+	
+	
+	var startTimestampOfTheDay = currentTime.setHours(0,0,0,0);
+	var thirtyMinutes = 30*minuteToMS;
+	var fiveMinutes = 5*minuteToMS;
+	var timeData;
+	var minuteData;
+	var bigInterval = true;
+	for(i=0;i<288;i++){
+		timeData = startTimestampOfTheDay+(i*fiveMinutes);
+		minuteData = new Date(timeData).getMinutes();
+		if(minuteData==0 || minuteData==30){
+			bigInterval = true;
+		}else{
+			bigInterval = false;
+		}
+		$scope.UTC.push(
+			{
+				time:timeData,
+				bigInterval: bigInterval
+			}
+		);
+	}
+	
+	setTimeout(function(){
+		refreshCurrentTime($scope);
+	},60000)
+	
+	//for(i=0;i<288;i++){
+		//$scope.UTC.push(startTimestampOfTheDay+(i*fiveMinutes))
+	//}	
+});
+
+function refreshCurrentTime(scope){
+	var minuteToMS = 60*1000;
+	var currentTime = new Date();
+	scope.currentUTCTime = new Date(currentTime.getTime() + (currentTime.getTimezoneOffset()*minuteToMS));
+	scope.currentUTCTime = scope.currentUTCTime.setSeconds(0,0);
+	
+	scope.currentUTCTime = scope.currentUTCTime - ((new Date(scope.currentUTCTime).getMinutes()%5)*minuteToMS)
+	setTimeout(function(){
+		refreshCurrentTime(scope);
+	},60000)
+}
+
+function scrollToCurrentTime(){
+	setTimeout(function(){		
+		//document.getElementById("currentTimeSection").scrollIntoView();
+		if(typeof(document.getElementById("currentTimeSection"))!= undefined){
+			window.scrollTo(0, document.getElementById('currentTimeSection').offsetBottom);
+		}
+	},500);	
+}
+
+//function getMousePos(e) {
+  // return {x:e.clientX,y:e.clientY};
+//}
+
+//document.onmousemove=function(e) {
+	//var mousecoords = getMousePos(e);
+	////alert(mousecoords.x);alert(mousecoords.y);
+
+//};
+
+</script>
+
+</body>
+</html>

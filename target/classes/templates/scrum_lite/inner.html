@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,700,600" rel="stylesheet" type="text/css">
+		
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<title>Project Management</title>
+		<script>
+			$(document).ready(function(){
+				//alert('dd');
+				$win_height = $(window).height();
+				$('body').css('height',$win_height);
+				
+				$('.data_result_rows .single_result_row.add_content').hide();
+				
+				$('.search_bar i.fa.add_new').click(function(){
+				$('.data_result_rows .single_result_row.add_content').show();				
+				});
+				
+				$('.data_result_rows .single_result_row.add_content i.fa-close').click(function(){
+				$('.data_result_rows .single_result_row.add_content').hide();				
+				});
+				
+				$('.new_feature').hide();
+				$('.search_bar .adv_search').click(function(){
+				$('.new_feature').show();
+				$('.new_feature').fadeOut( 2500, "linear");
+				});
+				
+		//		$('.save_later').click(function(){
+	// $('.div_save_later').show();
+  //$('.div_save_later').fadeOut( 1500, "linear");
+
+//});
+				
+			});
+		</script>
+
+	</head>
+	<body>
+	<div class="new_feature">
+	Feature available in next version
+	</div>
+	<div class="col-md-12 top_bar">
+		<div class="navigation_bar">
+			<div class="menus col-md-8">
+				<ul>
+					<li> <a href="#"> <i class="fa fa-home"> </i> </a> </li>
+					<li> <a href="#"> Calendar </a> </li>
+					<li> <a href="#"> Organizations </a> </li>
+					<li> <a href="#"> Contacts </a> </li>
+					<li> <a href="#"> Products </a> </li>
+					<li> <a href="#"> Documents </a> </li>
+					<li> <a href="#"> Tickets </a> </li>
+					<li> <a href="#"> Projects </a> </li>
+					<li> <a href="#"> All&nbsp; <i class="fa fa-caret-down mini_icon"></i> </a> </li>
+				
+				</ul>
+			</div>
+			
+			<div class="col-md-4 logged_user_options">
+				<ul class="tr">
+					
+					
+					<li class="dropdown"> <a href="#" class="dropdown-toggle" id="dropdownMenu2"> Ahamed&nbsp; <i class="fa fa-caret-down mini_icon"></i> </a> 
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu2" data-toggle="dropdown" >
+    <li><a href="#"><i class="fa fa-user"></i>Contact</a></li>
+    <li><a href="#"><i class="fa fa-cogs"></i>Settings</a></li>
+    <li class="divider"></li>
+    <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+  </ul>
+					</li>
+					<li> <a href="#"> <i class="fa fa-cog rounded"> </i> </a> </li>
+					<li> <a href="#"> <i class="fa fa-info rounded"> </i> </a> </li>
+					
+				</ul>
+			</div>
+		
+		</div>
+	
+	</div>		
+	
+		<div class="header col-md-12">
+			<div class="inner_header col-md-12">
+				<div class="logo_container col-md-2">
+					<img src="images/logo.png" />
+				</div>
+				
+				<div class="col-md-10">
+					<div class="search_bar">
+					<div class="dropdown marg_right10">
+						<div class="all_records col-md-2 dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">
+							All Records&nbsp; <i class="fa fa-caret-down fr"></i>
+						</div>
+ <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#"><i class="fa fa-user"></i>Contact</a></li>
+    <li><a href="#"><i class="fa fa-cogs"></i>Settings</a></li>
+    <li class="divider"></li>
+    <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+  </ul>
+  
+  </div>
+  
+	<div class="dropdown marg_right10">
+						<div class="ddl_actions all_records col-md-1 dropdown-toggle" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="false">
+							Actions&nbsp; <i class="fa fa-caret-down fr"></i>
+						</div>
+ <ul class="dropdown-menu action_ddl" aria-labelledby="dropdownMenu3">
+    <li><a href="#"><i class="fa fa-user"></i>Constact</a></li>
+    <li><a href="#"><i class="fa fa-cogs"></i>Settings</a></li>
+    <li class="divider"></li>
+    <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+  </ul>
+  
+  </div>
+  
+    <div class="dropdown marg_right10">
+						<div class="ddl_actions all_records col-md-2 dropdown-toggle" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="false">
+							All&nbsp; <i class="fa fa-filter fr"></i>
+						</div>
+ <ul class="dropdown-menu filter_ddl" aria-labelledby="dropdownMenu3">
+    <li><a href="#"><i class="fa fa-user"></i>Constact</a></li>
+    <li><a href="#"><i class="fa fa-cogs"></i>Settings</a></li>
+    <li class="divider"></li>
+    <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+  </ul>
+  
+  </div>
+  
+		  <div class="col-md-2 top_search_box">
+			<input type="text" placeholder="Search Keywords" />	  
+			<i class="fa fa-search"></i>
+		  </div>
+		  
+		  <div class="col-md-2 adv_search">
+			Advanced Search
+		  </div>
+		  		  
+		  <i class="fa fa-plus fr add_new"></i>
+							</div>
+				</div>
+			
+			</div>
+		
+		</div>
+		
+		
+		<div class="col-md-12 top_below_area boot_col">
+		<ul class="breadcrumb fl">
+    <li><a href="#">Dashboard</a></li>
+    <li><a href="#">Tickets</a></li>
+    <li class="active">Booking	</li>
+</ul>
+
+
+<ul class="pagination">
+    <li><a href="#" class="navig_arrow">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+	<li><a href="#">6</a></li>
+    <li><a href="#">7</a></li>
+    <li><a href="#">8</a></li>
+    <li><a href="#">9</a></li>
+    <li><a href="#">10</a></li>
+    <li><a href="#" class="navig_arrow">&raquo;</a></li>
+</ul>
+		</div>
+		
+		
+		<div class="col-md-12 data_content_area">
+			
+			<div class="header_row col-md-12 boot_col">
+				<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+				<div class="col-md-2 boot_col"> Project Task Name</div>
+				<div class="col-md-2"> Related To</div>
+				<div class="col-md-2"> Assigned To</div>
+				<div class="col-md-1"> Status </div>
+				<div class="col-md-1"> Start Date </div>
+				<div class="col-md-1"> End Date </div>
+			</div>
+			<div class="col-md-12 empty_row">
+			</div>
+			
+			<div class="data_result_rows">
+			
+				<div class="single_result_row add_content col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <!-- <label> <input type="checkbox" /> </label>  --></div>
+					<div class="col-md-2 boot_col"> <input type="text" />  </div>
+					<div class="col-md-2"> <input type="text" /> </div>
+					<div class="col-md-2"> <select class="select85"> 
+						<option> Ahamed Kabeer </option>
+						<option> vibin Dhas </option>
+					</select> </div>
+					<div class="col-md-1"> <select> 
+						<option> Open </option>
+						<option> Completed </option>
+						<option> Closed </option>
+						<option> In Progress </option>
+					</select>  </div>
+					<div class="col-md-1 start_date date boot_col"> <input type="text" /> <i class="fa fa-calendar"></i> </div>
+					<div class="col-md-1 end_date date boot_col"> <input type="text" /> <i class="fa fa-calendar"></i> </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-check fl edit"></i>
+						<i class="fa fa-close fl del"></i>
+					</div>
+				</div>
+				
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> My RegIntel</div>
+					<div class="col-md-2"> Medical</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Open </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> Bar Trivia</div>
+					<div class="col-md-2"> Quiz Games</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Closed </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> FullIntel</div>
+					<div class="col-md-2"> News Articles</div>
+					<div class="col-md-2"> Vibin Dhas</div>
+					<div class="col-md-1"> In Progress </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> Bludecloudventueres</div>
+					<div class="col-md-2"> Medical</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Open </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				
+			
+				
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> My RegIntel</div>
+					<div class="col-md-2"> Medical</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Open </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> Bar Trivia</div>
+					<div class="col-md-2"> Quiz Games</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Closed </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> FullIntel</div>
+					<div class="col-md-2"> News Articles</div>
+					<div class="col-md-2"> Vibin Dhas</div>
+					<div class="col-md-1"> In Progress </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> Bludecloudventueres</div>
+					<div class="col-md-2"> Medical</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Open </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				
+				
+			
+				
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> My RegIntel</div>
+					<div class="col-md-2"> Medical</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Open </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> Bar Trivia</div>
+					<div class="col-md-2"> Quiz Games</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Closed </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> FullIntel</div>
+					<div class="col-md-2"> News Articles</div>
+					<div class="col-md-2"> Vibin Dhas</div>
+					<div class="col-md-1"> In Progress </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> Bludecloudventueres</div>
+					<div class="col-md-2"> Medical</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Open </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				
+			
+				
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> My RegIntel</div>
+					<div class="col-md-2"> Medical</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Open </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> Bar Trivia</div>
+					<div class="col-md-2"> Quiz Games</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Closed </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> FullIntel</div>
+					<div class="col-md-2"> News Articles</div>
+					<div class="col-md-2"> Vibin Dhas</div>
+					<div class="col-md-1"> In Progress </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+				
+				<div class="single_result_row col-md-12 boot_col"> 
+					<div class="col-md-1 check_select"> <label> <input type="checkbox" /> </label> </div>
+					<div class="col-md-2 boot_col"> Bludecloudventueres</div>
+					<div class="col-md-2"> Medical</div>
+					<div class="col-md-2"> Ahamed Kabeer</div>
+					<div class="col-md-1"> Open </div>
+					<div class="col-md-1"> 2015-10-03 </div>
+					<div class="col-md-1"> 2015-11-03 </div>
+					
+					<div class="fr action_btn">
+						<i class="fa fa-pencil fl edit" title="Edit"></i>
+						<i class="fa fa-trash fl del" title="Delete"></i>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		
+	
+	
+		<div class="footer col-md-12 tc">
+		Copyright &copy; 2015. All rights reserved.
+		<span class="product_from"> A product of <strong> SCRUM </strong> </span>
+		</div>
+	
+		
+	</body>
+</html>
