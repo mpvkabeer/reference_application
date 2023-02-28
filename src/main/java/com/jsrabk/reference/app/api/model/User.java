@@ -1,6 +1,5 @@
 package com.jsrabk.reference.app.api.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +12,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="user")
-//@Document(indexName = "java_test_app", type = "users")
 public class User {
 
    @Id
@@ -27,24 +25,6 @@ public class User {
 	@JoinColumn(name = "StatusId")
     private Status status;
  
-//    public User() {
-// 
-//    }
- 
-//    public User(Long id, String username, String first_name, String last_name, //
-//            boolean enabled, String gender, //
-//            String email, String password) {
-//        super();
-//        this.id = id;
-//        this.username = username;
-//        this.first_name = first_name;
-//        this.last_name = last_name;
-//        this.enabled = enabled;
-//        this.gender = gender;
-//        this.email = email;
-//        this.password = password;
-//    }
-// 
     public Long getId() {
         return id;
     }

@@ -6,6 +6,7 @@ import com.jsrabk.reference.app.api.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
   
+//TODO:	
 //   User findByEmail(String email);
 //
 //   User findByUsername(String username);

@@ -1,6 +1,7 @@
 package com.jsrabk.reference.app.api.product.repository;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch._types.Refresh;
 import co.elastic.clients.elasticsearch.core.*;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,14 @@ public class ProductESRepository {
 
 
     public String createOrUpdateDocument(Product product) throws IOException {
-
+    	
         IndexResponse response = elasticsearchClient.index(i -> i
                 .index(indexName)
-                .id(product.getId())
+                .id(product.getId()+"")
                 .document(product)
+                .refresh(Refresh.True)
         );
+        
         if(response.result().name().equals("Created")){
             return new StringBuilder("Document has been successfully created.").toString();
         }else if(response.result().name().equals("Updated")){
@@ -57,7 +60,7 @@ public class ProductESRepository {
 
     public String deleteDocumentById(String productId) throws IOException {
 
-        DeleteRequest request = DeleteRequest.of(d -> d.index(indexName).id(productId));
+        DeleteRequest request = DeleteRequest.of(d -> d.index(indexName).id(productId).refresh(Refresh.True));
 
         DeleteResponse deleteResponse = elasticsearchClient.delete(request);
         if (Objects.nonNull(deleteResponse.result()) && !deleteResponse.result().name().equals("NotFound")) {
@@ -70,16 +73,13 @@ public class ProductESRepository {
 
     public  List<Product> searchAllDocuments() throws IOException {
 
-        SearchRequest searchRequest =  SearchRequest.of(s -> s.index(indexName));
-        SearchResponse searchResponse =  elasticsearchClient.search(searchRequest, Product.class);
-        List<Hit> hits = searchResponse.hits().hits();
-        List<Product> products = new ArrayList<>();
-        for(Hit object : hits){
-
-            System.out.print(((Product) object.source()));
-            products.add((Product) object.source());
-
-        }
-        return products;
+    	   SearchRequest searchRequest =  SearchRequest.of(s -> s.index(indexName));
+           SearchResponse<Product> searchResponse =  elasticsearchClient.search(searchRequest, Product.class);
+           List<Hit<Product>> hits = searchResponse.hits().hits();
+           List<Product> products = new ArrayList<>();
+           for(Hit<Product> product : hits){
+               products.add(product.source());
+           }
+           return products;
     }
 }

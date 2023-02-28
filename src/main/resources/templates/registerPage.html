@@ -42,14 +42,14 @@
                   <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..</span>
                </td>
             </tr>
-            <tr>
+            <!--tr>
                <td>Confirm</td>
                <td><input type="password" th:field="*{confirmPassword}" /> </td>
                <td>
                   <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">..</span>
                </td>
-            </tr>
-            <tr>
+            </tr-->
+            <!-- tr>
                <td>Email</td>
                <td><input type="text" th:field="*{email}" /> </td>
                <td>
@@ -82,12 +82,12 @@
                <td>
                   <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">..</span>
                </td>
-            </tr>
+            </tr-->
             <tr>
                <td>&nbsp;</td>
                <td>
                   <input type="submit" value="Submit" />
-                  <a th:href="@{/}">Cancel</a>
+                  <a th:href="@{/members}">Cancel</a>
                </td>
                <td>&nbsp;</td>
             </tr>

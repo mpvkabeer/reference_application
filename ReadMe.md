@@ -74,6 +74,9 @@ References:
 Spring Start Project:
 https://start.spring.io/
 
+DB CRUD Example:
+https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html
+
 ES CRUD Example:
 https://www.pixeltrice.com/spring-boot-elasticsearch-crud-example/
 

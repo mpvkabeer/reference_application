@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.jsrabk.reference.app.api.model.Status;
 import com.jsrabk.reference.app.api.model.User;
 import com.jsrabk.reference.app.api.user.service.UserService;
-import com.jsrabk.reference.app.formbean.UserForm;
 import com.jsrabk.reference.app.validator.UserValidator;
  
 @Controller
-public class MainController {
+public class UserUIController {
  
    @Autowired
    private UserService userService;
@@ -38,7 +38,7 @@ public class MainController {
       }
       System.out.println("Target=" + target);
  
-      if (target.getClass() == UserForm.class) {
+      if (target.getClass() == User.class) {
          dataBinder.setValidator(appUserValidator);
       }
       // ...
@@ -71,10 +71,10 @@ public class MainController {
    @RequestMapping(value = "/register", method = RequestMethod.GET)
    public String viewRegister(Model model) {
  
-      UserForm form = new UserForm();
+      User user = new User();
       //List<Country> countries = countryDAO.getCountries();
  
-      model.addAttribute("appUserForm", form);
+      model.addAttribute("appUserForm", user);
 //      model.addAttribute("countries", countries);
  
       return "registerPage";
@@ -85,19 +85,27 @@ public class MainController {
    // has been Validated before this method is invoked.
    @RequestMapping(value = "/register", method = RequestMethod.POST)
    public String saveRegister(Model model, //
-         @ModelAttribute("userForm") @Validated UserForm userForm, //
+         @ModelAttribute("user") @Validated User userForm, //
          BindingResult result, //
          final RedirectAttributes redirectAttributes) {
  
+	   
       // Validate result
       if (result.hasErrors()) {
          return "registerPage";
       }
+      
       User newUser= new User();
-      newUser.setUsername(userForm.getUsername());
+      Status status = new Status();
       
       try {
-         //newUser = userDao.createUser(userForm);
+    	  
+	      newUser.setUsername(userForm.getUsername());
+	      newUser.setPassword(userForm.getPassword());
+	      newUser.setIsLoggedIn(false);
+	      status.setId(2);
+	      newUser.setStatus(status);
+      
     	  userService.save(newUser);
       }
       // Other error!!
@@ -111,7 +119,7 @@ public class MainController {
       return "redirect:/registerSuccessful";
    }
  
-   // Show Register page.
+   // Show Login page. //TODO: Add Logic
    @RequestMapping(value = "/login", method = RequestMethod.GET)
    public String viewLOgin(Model model) {
  

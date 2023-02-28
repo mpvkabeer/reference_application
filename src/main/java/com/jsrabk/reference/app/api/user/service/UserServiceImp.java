@@ -1,11 +1,9 @@
 package com.jsrabk.reference.app.api.user.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.jsrabk.reference.app.api.model.User;
 import com.jsrabk.reference.app.api.user.repository.UserRepository;
@@ -36,12 +34,13 @@ public class UserServiceImp implements UserService {
 		userDao.deleteById(id);
 	}
 	
-	public User findByUsername(String username) {
-		return userDao.findAll().get(0); //TODO: Add logic here 
-	}
-	
-	public User findByEmail(String email) {
-		return findByUsername(email);
-	}
+//TODO:	
+//	public User findByUsername(String username) {
+//		return userDao.findAll().get(0); //TODO: Add logic here 
+//	}
+//	
+//	public User findByEmail(String email) {
+//		return findByUsername(email);
+//	}
 
 }

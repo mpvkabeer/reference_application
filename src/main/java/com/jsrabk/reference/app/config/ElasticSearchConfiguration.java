@@ -34,11 +34,11 @@ public class ElasticSearchConfiguration
     @Bean
     public RestClient client() {
     	
-        System.out.println("scheme: "+scheme);
-        System.out.println("hostname: "+hostname);
-        System.out.println("port: "+port);
-        System.out.println("username: "+username);
-        System.out.println("password: "+password);
+//        System.out.println("scheme: "+scheme);
+//        System.out.println("hostname: "+hostname);
+//        System.out.println("port: "+port);
+//        System.out.println("username: "+username);
+//        System.out.println("password: "+password);
     	
         final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(username, password));
@@ -55,7 +55,6 @@ public class ElasticSearchConfiguration
                     }
                 }).build();
         
-        System.out.println("Everything is ok");
         return restClient;
     }
 

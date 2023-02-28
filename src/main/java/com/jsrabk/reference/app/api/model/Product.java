@@ -10,7 +10,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 public class Product {
 
     @Id
-    private String id;
+    private int id;
 
     @Field(type = FieldType.Text, name = "name")
     private String name;
@@ -21,12 +21,12 @@ public class Product {
     @Field(type = FieldType.Double, name = "price")
     private double price;
 
-    public String getId() {
+    public int getId() {
     	return this.id;
     }   
     
-    public void setId(String id) {
-    	this.name = id;
+    public void setId(int id) {
+    	this.id = id;
     }
     
     public String getName() {
