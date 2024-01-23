@@ -28,7 +28,7 @@ Optional Software for Dev Testing:
 3. GitBash or Git Desktop
 
 Download and Install JDK 19 from Orcale:
-https://download.oracle.com/java/19/latest/jdk-19_windows-x64_bin.msi
+https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.msi
 (For installing other versions of Java, visit https://www.oracle.com/java/technologies/downloads)
 
 "Spring Tools 4" can be plugged into Eclipse IDE, Visual Studio IDE and IntelliJ IDE. I prefer Eclipse IDE.
