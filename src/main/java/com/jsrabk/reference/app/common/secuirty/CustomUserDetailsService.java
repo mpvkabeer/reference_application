@@ -1,15 +1,14 @@
 package com.jsrabk.reference.app.common.secuirty;
 
+import com.jsrabk.reference.app.api.model.Role;
+import com.jsrabk.reference.app.api.model.User;
+import com.jsrabk.reference.app.api.user.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.jsrabk.reference.app.api.model.Role;
-import com.jsrabk.reference.app.api.model.User;
-import com.jsrabk.reference.app.api.user.repository.UserRepository;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -32,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                     user.getPassword(),
                     mapRolesToAuthorities(user.getRoles()));
         }else{
-            throw new UsernameNotFoundException("Invalid email or password.");
+            throw new UsernameNotFoundException("Invalid username or password.");
         }
     }
 

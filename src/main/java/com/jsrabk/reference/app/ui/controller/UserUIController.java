@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jsrabk.reference.app.api.model.Status;
 import com.jsrabk.reference.app.api.model.User;
+import com.jsrabk.reference.app.api.user.dto.UserDTO;
 import com.jsrabk.reference.app.api.user.service.UserService;
 import com.jsrabk.reference.app.validator.UserValidator;
 
@@ -135,21 +136,21 @@ public class UserUIController {
        return "login";
    }
 
+
    // handler method to handle user registration request
    @GetMapping("register")
    public String showRegistrationForm(Model model){
-       User user = new User();
+       UserDTO user = new UserDTO();
        model.addAttribute("user", user);
        return "register";
    }
 
    // handler method to handle register user form submit request
    @PostMapping("/register/save")
-   public String registration(@Valid @ModelAttribute("user") User user,
+   public String registration(@Valid @ModelAttribute("user") UserDTO user,
                               BindingResult result,
                               Model model){
-       //User existing = userService.findByEmail(user.getEmail());
-       User existing = null;
+       User existing = userService.findByEmail(user.getEmail());
        if (existing != null) {
            result.rejectValue("email", null, "There is already an account registered with that email");
        }
@@ -157,15 +158,15 @@ public class UserUIController {
            model.addAttribute("user", user);
            return "register";
        }
-       userService.save(user);
+       userService.saveUser(user);
        return "redirect:/register?success";
-   }
+   }   
 
-   @GetMapping("/users")
+   @GetMapping("/all_users")
    public String listRegisteredUsers(Model model){
        List<User> users = userService.list();
        model.addAttribute("users", users);
-       return "users";
+       return "all_users";
    }   
    
 }

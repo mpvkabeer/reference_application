@@ -1,11 +1,10 @@
 package com.jsrabk.reference.app.api.model;
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name="role")
-
 public class Role
 {
     @Id
@@ -15,7 +14,7 @@ public class Role
     @Column(nullable=false, unique=true)
     private String name;
 
-    @ManyToMany(mappedBy="role")
+    @ManyToMany(mappedBy="roles")
     private List<User> users;
     
     public void setId(Long id) {
@@ -30,12 +29,12 @@ public class Role
         this.name = name;
     }
     
-//    public List<User> getUsers() {
-//        return users;
-//    }
-// 
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }       
+    public List<User> getUsers() {
+        return users;
+    }
+ 
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }       
     
 }
