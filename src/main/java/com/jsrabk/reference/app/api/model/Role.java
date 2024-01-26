@@ -1,18 +1,10 @@
 package com.jsrabk.reference.app.api.model;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name="roles")
+@Table(name="role")
 
 public class Role
 {
@@ -23,6 +15,27 @@ public class Role
     @Column(nullable=false, unique=true)
     private String name;
 
-    @ManyToMany(mappedBy="roles")
+    @ManyToMany(mappedBy="role")
     private List<User> users;
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+ 
+    public String getName() {
+        return name;
+    }
+ 
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+//    public List<User> getUsers() {
+//        return users;
+//    }
+// 
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }       
+    
 }

@@ -87,5 +87,8 @@ https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data
 ES CRUD Example:
 https://www.pixeltrice.com/spring-boot-elasticsearch-crud-example/
 
+SpringSecurity (Login) Example:
+https://github.com/RameshMF/registration-login-springboot-security-thymeleaf
+
 Bug Fixes:
 https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-refresh.html#refresh_wait_for-force-refresh

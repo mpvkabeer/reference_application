@@ -33,14 +33,9 @@ public class UserServiceImp implements UserService {
 	public void deleteById(long id) {
 		userDao.deleteById(id);
 	}
-	
-//TODO:	
-//	public User findByUsername(String username) {
-//		return userDao.findAll().get(0); //TODO: Add logic here 
-//	}
-//	
-//	public User findByEmail(String email) {
-//		return findByUsername(email);
-//	}
+
+	public User findByEmail(String email) {
+		return findByEmail(email);
+	}
 
 }

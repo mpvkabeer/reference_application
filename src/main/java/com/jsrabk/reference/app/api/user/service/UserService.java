@@ -10,8 +10,6 @@ public interface UserService {
    User getById(long id);
    List<User> list();
    void deleteById(long id);
-   
-//TODO:
-//   User findByUsername(String username);
-//   User findByEmail(String email);
+
+   User findByEmail(String email);
 }

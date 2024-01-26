@@ -37,24 +37,24 @@ public class UserController {
       return ResponseEntity.ok().body(user);
    }
 
-   /*---get all users---*/
-   @GetMapping("/users")
-   public ResponseEntity<List<User>> list() {
-	  System.out.println("Getting user List inside UserController"); 
-      List<User> users = userService.list();
-      System.out.println("Inside UserController"+users);
-      for(User user : users) {
-    	  System.out.println("Id:"+ user.getId());
-    	  System.out.println("Username:"+ user.getUsername());
-    	  System.out.println("Password:"+ user.getPassword());
-    	  System.out.println("IsLoggedIn:"+ user.getIsLoggedIn());
-    	  System.out.println("StatusId:"+ user.getStatus().getId());
-    	  System.out.println("Status:"+ user.getStatus().getName());
-      }
+//   /*---get all users---*/
+//   @GetMapping("/users")
+//   public ResponseEntity<List<User>> list() {
+//	  System.out.println("Getting user List inside UserController"); 
+//      List<User> users = userService.list();
+//      System.out.println("Inside UserController"+users);
+//      for(User user : users) {
+//    	  System.out.println("Id:"+ user.getId());
+//    	  System.out.println("Email:"+ user.getEmail());
+//    	  System.out.println("Password:"+ user.getPassword());
+//    	  System.out.println("IsLoggedIn:"+ user.getIsLoggedIn());
+//    	  System.out.println("StatusId:"+ user.getStatus().getId());
+//    	  System.out.println("Status:"+ user.getStatus().getName());
+//      }
 
      
-      return ResponseEntity.ok().body(users);
-   }
+//      return ResponseEntity.ok().body(users);
+//   }
 
    /*---Update a user by id---*/
    @PutMapping("/user/{id}")
