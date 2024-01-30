@@ -6,28 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.filter.GenericFilterBean;
-
-import com.jsrabk.reference.app.common.security.ApiKeyAuthentication;
-import com.jsrabk.reference.app.common.security.AuthenticationFilter;
-
-import jakarta.servlet.Filter;
-
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 
 @Configuration
 @EnableWebSecurity
@@ -48,8 +32,7 @@ public class SpringSecurity {
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/all_users").hasRole("ADMIN")
-                                .requestMatchers("/api/**").permitAll()
-                        		.requestMatchers("/error").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
@@ -61,10 +44,6 @@ public class SpringSecurity {
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                                 .permitAll()
                 );
-                //.securityMatcher("/api/**")
-                //.addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-                //.addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-        
         return http.build();
     }
 

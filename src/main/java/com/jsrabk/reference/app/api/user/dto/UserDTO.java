@@ -12,7 +12,7 @@ public class UserDTO {
     @NotEmpty
     private String lastname;
     @NotEmpty(message = "Email should not be empty")
-    @Email
+    @Email    
     private String email;
     @NotEmpty(message = "Password should not be empty")
     private String password;
