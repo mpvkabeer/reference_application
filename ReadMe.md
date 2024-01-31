@@ -4,14 +4,16 @@ This application has both Backend (SpringBoot having few APIs) and FrontEnd (UI)
 
 Using this reference project, you can learn about following technologies 
 
-1. SpringBoot
-2. MVC Architecture
-3. Database concepts
-4. APIs for CRUD operations
-5. Hibernate
-6. Thymeleaf for UI
-7. CRUD Operations with ElasticSearch
-8. Utilities for String, CSV, File and JSON 
+01. SpringBoot
+02. MVC Architecture
+03. Database concepts
+04. APIs for CRUD operations
+05. Hibernate
+06. Thymeleaf for UI
+07. CRUD Operations with ElasticSearch
+08. Utilities for String, CSV, File and JSON 
+09. Spring Security
+10. JWT Concepts
 
 
 Software Used in this project:
@@ -66,11 +68,12 @@ Download and Install Git Desktop app from  https://central.github.com/deployment
 9. This project demonstrate the CRUD operation for ES. So we will create an index named "products" in ES. To do this, Open "Multi ElasticSeach Head" and connect to ES. In "Any Request" tab, type "http://localhost:9200/" in the Query URL section, and enter "products" in the Query parameter section. Select type as "PUT", type {} as request body., and finally click on "Request Button"
 10. To run the project, Right click in the project title in the STS and click on 'Run As'=> 'Java Application' and then select the main class file "ReferenceApplication" in the popup window.
 11. Wait for few seconds, Check in the console window if you get any error. If no errors then fine.
-12. To test the APIs for Database operations, open any Rest Client call http://localhost:8080/users (GET method). If you get list of users in the result, it is working fine. Test the othr APIs also.
-13. To test the Database CRUD operations via UI, Open http://localhost:8080/welcome in any browser
-14. To test the ElasticSearch CRUD operations via UI, Open http://localhost:8080/ in any browser
-15. Done
-=========================================================================================================================
+12. To view the Application Home page Open http://localhost:8080/ in browser.
+13. To test the APIs for Database operations, open any Rest Client call http://localhost:8080/api/users (GET method). If you get list of users in the result, it is working fine. Test the othr APIs also.
+14. To test the Database CRUD operations via UI, Open http://localhost:8080/welcome in any browser
+15. To test the ElasticSearch CRUD operations via UI, Open http://localhost:8080/product_store in any browser
+16. Done
+============================================================================================
 
 *Any questions, Contact Ahamed Kabeer: +91 9843527241 or hakabeer@gmail.com*
 
