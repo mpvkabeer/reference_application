@@ -61,7 +61,7 @@ public class SpringSecurity {
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
-                                .requestMatchers("/login/**").permitAll()
+                                .requestMatchers("/login**").permitAll()
                                 .requestMatchers("/all_users").hasRole("ADMIN")
                         		.requestMatchers("/error").permitAll()
                         		.requestMatchers("/open-api/**").permitAll()
@@ -76,43 +76,9 @@ public class SpringSecurity {
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                                 .permitAll()
                 );
-                //.securityMatcher("/api/**")
-                //.addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-                //.addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-        
         return http.build();
     }
-//
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpRe http) throws Exception {
-//        http.csrf().disable()
-//                .securityMatcher("/api/**")
-//                .addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-//        
-//        return http.build();
-//    }
 
-    /*
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
-          .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry 
-        		  -> authorizationManagerRequestMatcherRegistry
-      		  		.requestMatchers("/**").authenticated()
-//        		  	.requestMatchers("/api/**").authenticated()
-//        		  	.requestMatchers("/api/users11").authenticated()
-//        		  	.requestMatchers("/register/**").permitAll()
-//        		  	.requestMatchers("/index").permitAll()
-//        		  	.requestMatchers("/error").permitAll()
-//        		  	.requestMatchers("/all_users").hasRole("ADMIN")        		  	
-        		  )
-	          .httpBasic(Customizer.withDefaults())
-	          .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-	          .addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
-    }    
-    */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.debug(false)

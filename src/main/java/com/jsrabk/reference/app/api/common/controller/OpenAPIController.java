@@ -3,18 +3,14 @@ package com.jsrabk.reference.app.api.common.controller;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jsrabk.reference.app.common.secuirty.CustomUserDetailsService;
+import com.jsrabk.reference.app.common.security.CustomUserDetailsService;
 import com.jsrabk.reference.app.common.security.jwt.JwtHelper;
 
 import jakarta.servlet.http.HttpServletRequest;

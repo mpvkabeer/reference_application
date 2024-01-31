@@ -2,11 +2,8 @@ package com.jsrabk.reference.app.api.user.controller;
 
 import java.util.List;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jsrabk.reference.app.api.model.User;
 import com.jsrabk.reference.app.api.user.service.UserService;
-import com.jsrabk.reference.app.common.security.jwt.JwtHelper;
 
 @RestController
 @RequestMapping("/api")
@@ -45,18 +41,16 @@ public class UserController {
 
    /*---get all users---*/
    @GetMapping("/users")
-   public ResponseEntity<List<User>> list() {
-	  System.out.println("Getting user List inside UserController"); 
+   public ResponseEntity<List<User>> list() { 
       List<User> users = userService.list();
-      System.out.println("Inside UserController"+users);
-      for(User user : users) {
-    	  System.out.println("Id:"+ user.getId());
-    	  System.out.println("Email:"+ user.getEmail());
-    	  System.out.println("Password:"+ user.getPassword());
-    	  System.out.println("IsLoggedIn:"+ user.getIsLoggedIn());
-    	  System.out.println("StatusId:"+ user.getStatus().getId());
-    	  System.out.println("Status:"+ user.getStatus().getName());
-      }
+//      for(User user : users) {
+//    	  System.out.println("Id:"+ user.getId());
+//    	  System.out.println("Email:"+ user.getEmail());
+//    	  System.out.println("Password:"+ user.getPassword());
+//    	  System.out.println("IsLoggedIn:"+ user.getIsLoggedIn());
+//    	  System.out.println("StatusId:"+ user.getStatus().getId());
+//    	  System.out.println("Status:"+ user.getStatus().getName());
+//      }
 
      
       return ResponseEntity.ok().body(users);

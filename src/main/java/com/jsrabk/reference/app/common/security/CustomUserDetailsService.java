@@ -1,4 +1,4 @@
-package com.jsrabk.reference.app.common.secuirty;
+package com.jsrabk.reference.app.common.security;
 
 import com.jsrabk.reference.app.api.model.Role;
 import com.jsrabk.reference.app.api.model.User;
