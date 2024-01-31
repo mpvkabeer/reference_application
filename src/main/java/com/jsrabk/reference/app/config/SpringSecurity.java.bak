@@ -47,28 +47,6 @@ public class SpringSecurity {
         return http.build();
     }
 
-
-    /*
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
-          .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry 
-        		  -> authorizationManagerRequestMatcherRegistry
-      		  		.requestMatchers("/**").authenticated()
-//        		  	.requestMatchers("/api/**").authenticated()
-//        		  	.requestMatchers("/api/users11").authenticated()
-//        		  	.requestMatchers("/register/**").permitAll()
-//        		  	.requestMatchers("/index").permitAll()
-//        		  	.requestMatchers("/error").permitAll()
-//        		  	.requestMatchers("/all_users").hasRole("ADMIN")        		  	
-        		  )
-	          .httpBasic(Customizer.withDefaults())
-	          .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-	          .addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
-    }    
-    */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.debug(false)
@@ -80,8 +58,8 @@ public class SpringSecurity {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
+            .userDetailsService(userDetailsService)
+            .passwordEncoder(passwordEncoder());
     }
     
 }

@@ -2,8 +2,11 @@ package com.jsrabk.reference.app.api.user.controller;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jsrabk.reference.app.api.model.User;
 import com.jsrabk.reference.app.api.user.service.UserService;
+import com.jsrabk.reference.app.common.security.jwt.JwtHelper;
 
 @RestController
 @RequestMapping("/api")
@@ -22,7 +26,7 @@ public class UserController {
 
    @Autowired
    private UserService userService;
-
+   
    /*---Add new user---*/
    @PostMapping("/user")
    public ResponseEntity<?> save(@RequestBody User user) {

@@ -90,5 +90,7 @@ https://www.pixeltrice.com/spring-boot-elasticsearch-crud-example/
 SpringSecurity (Login) Example:
 https://github.com/RameshMF/registration-login-springboot-security-thymeleaf
 
+https://medium.com/@2015-2-60-004/multiple-spring-security-configurations-form-based-token-based-authentication-c65ffbeabd07#:~:text=We%20can%20create%20multiple%20security,matching%20pattern%2C%20add%20securityMatcher%20annotation.
+
 Bug Fixes:
 https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-refresh.html#refresh_wait_for-force-refresh
