@@ -20,14 +20,14 @@ public class ProductUIController {
     @Autowired
     private ProductESRepository productESRepository;
 
-    @GetMapping("/")
+    @GetMapping("/product_store")
     public String viewHomePage(Model model) {
     	try {
     		model.addAttribute("listProductDocuments",productESRepository.searchAllDocuments());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}        
-        return "index";
+        return "product_store";
     }
 
     @PostMapping("/saveProduct")

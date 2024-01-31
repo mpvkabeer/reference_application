@@ -65,6 +65,7 @@ public class SpringSecurity {
                                 .requestMatchers("/all_users").hasRole("ADMIN")
                         		.requestMatchers("/error").permitAll()
                         		.requestMatchers("/open-api/**").permitAll()
+                        		.requestMatchers("/**").permitAll()
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
