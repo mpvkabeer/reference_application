@@ -10,17 +10,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jsrabk.reference.app.api.model.User;
 import com.jsrabk.reference.app.api.user.service.UserService;
 
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
    @Autowired
    private UserService userService;
-
+   
    /*---Add new user---*/
    @PostMapping("/user")
    public ResponseEntity<?> save(@RequestBody User user) {
@@ -39,18 +41,16 @@ public class UserController {
 
    /*---get all users---*/
    @GetMapping("/users")
-   public ResponseEntity<List<User>> list() {
-	  System.out.println("Getting user List inside UserController"); 
+   public ResponseEntity<List<User>> list() { 
       List<User> users = userService.list();
-      System.out.println("Inside UserController"+users);
-      for(User user : users) {
-    	  System.out.println("Id:"+ user.getId());
-    	  System.out.println("Username:"+ user.getUsername());
-    	  System.out.println("Password:"+ user.getPassword());
-    	  System.out.println("IsLoggedIn:"+ user.getIsLoggedIn());
-    	  System.out.println("StatusId:"+ user.getStatus().getId());
-    	  System.out.println("Status:"+ user.getStatus().getName());
-      }
+//      for(User user : users) {
+//    	  System.out.println("Id:"+ user.getId());
+//    	  System.out.println("Email:"+ user.getEmail());
+//    	  System.out.println("Password:"+ user.getPassword());
+//    	  System.out.println("IsLoggedIn:"+ user.getIsLoggedIn());
+//    	  System.out.println("StatusId:"+ user.getStatus().getId());
+//    	  System.out.println("Status:"+ user.getStatus().getName());
+//      }
 
      
       return ResponseEntity.ok().body(users);
